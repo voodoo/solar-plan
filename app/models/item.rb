@@ -1,15 +1,19 @@
 class Item < ApplicationRecord
+  
   belongs_to :plan
+  belongs_to :priority
 
   default_scope {order('priority ASC')} 
+
+  validates_presence_of :name, :watts, :hours, :priority
 
   def watt_hours
     self.watts * self.hours
   end
 
-  PRIORITY = ['', "Need", "Want", "Luxury"]
-  def priority_name
-    PRIORITY[self.priority]
+
+  def self.options_for_priority
+    Priority.all.map{| p | [p.name, p.id]}
   end
 
 end

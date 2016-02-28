@@ -1,22 +1,12 @@
-h1 Solar Plans
+ul(data-role="listview" data-inset="true")
+  - @plans.each do | plan |
+    li
+      = link_to plan_path(plan) do
+        h3= plan.name
+        p.ui-li-aside
+          b= plan.watt_hours
+          br watts
 
-table
-  thead
-    tr
-      th Name
-      th Watt Hours
-      th
-      th
 
-  tbody
-    - @plans.each do |plan|
-      tr
-        td = plan.name
-        td = plan.watt_hours
-        td = link_to 'Show', plan
-        td = link_to 'Edit', edit_plan_path(plan)
-        td = link_to 'Destroy', plan, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
-
-= link_to 'New Plan', new_plan_path
+= link_to 'New Plan', new_plan_path, class: 'ui-btn'

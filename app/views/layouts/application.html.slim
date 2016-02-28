@@ -1,13 +1,15 @@
 doctype html
 html
   head
-    title My App
+    title Solar Plans
     meta name="viewport" content="width=device-width, initial-scale=1.0"
+    = render 'shared/head'
+
     = stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
-
   body
-    nav
-      = link_to "Home", '/'
-    = yield
+    div(data-role="page")
+      = render 'shared/header'      
+      div(role="main" class="ui-content")
+        = yield

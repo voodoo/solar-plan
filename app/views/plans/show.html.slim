@@ -1,14 +1,7 @@
-
-h1
-  = @plan.name
-  
-.pull-right= link_to "Edit", edit_plan_path(@plan)
-
-
 p#notice = notice
 
 = render template: 'items/index'
 
-= link_to 'Edit', edit_plan_path(@plan)
-'|
-= link_to 'Back', plans_path
+/ = link_to 'Edit', edit_plan_path(@plan)
+/ '|
+/ = link_to 'Back', plans_path

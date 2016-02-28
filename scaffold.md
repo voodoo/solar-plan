@@ -2,8 +2,9 @@ r db:drop
 r d scaffold item
 r d scaffold plan
 
+r g scaffold priority name
 r g scaffold plan name ip token
-r g scaffold item name watts:integer hours:integer priority:integer plan:belongs_to active:boolean
+r g scaffold item name watts:integer hours:integer priority:belongs_to plan:belongs_to active:boolean
 
 
 r db:migrate

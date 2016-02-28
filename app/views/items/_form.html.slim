@@ -17,7 +17,7 @@
     = f.number_field :hours
   .field
     = f.label :priority
-    = f.number_field :priority
+    = f.select :priority, Item.options_for_priority
   / .field
   /   = f.label :plan
   /   = f.text_field :plan

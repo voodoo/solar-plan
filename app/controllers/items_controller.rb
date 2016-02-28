@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item#, only: [:show, :edit, :update, :destroy]
+  before_action :set_item#, except: :new #only: [:show, :edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   # GET /items/new
   def new
+    #@plan = Plan.find(params[:id])
     @item = @plan.items.new
   end
 
@@ -24,7 +25,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = @plan.items.new(item_params)
 
     respond_to do |format|
       if @item.save
@@ -42,6 +43,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
+        puts plan_path(@plan)
         format.html { redirect_to(plan_path(@plan), notice: 'Item was successfully updated.') }
         format.json { render :show, status: :ok, location: @item }
       else
@@ -65,11 +67,11 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @plan = Plan.find(params[:plan_id])      
-      @item = @plan.items.find(params[:id])
+      @item = @plan.items.find(params[:id]) if params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :watts, :hours, :priority, :plan_id, :active)
+      params.require(:item).permit(:name, :watts, :hours, :priority_id, :plan_id, :active)
     end
 end

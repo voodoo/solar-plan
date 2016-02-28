@@ -1,28 +1,27 @@
+ul(data-role="listview" data-inset="true")
+  li(data-role='list-divider')
+    h3= @plan.name
+    p.ui-li-aside
+      b= @plan.watt_hours
+      |  watt hours
+  - Priority.all.each do |priority|
+    - sum = 0
+    - @items.each do | item |
+      - if item.priority === priority
+        li
+          = link_to edit_plan_item_path(@plan, item) do
+            h3= item.name
+            - watt_hours = "#{item.watts} watts x #{item.hours} hours"
+            - if item.active?
+              p= watt_hours
+            - else
+              p.item-not-active= watt_hours
+            p.ui-li-aside(class="#{'item-not-active' unless item.active?}")= "#{item.watt_hours} watt hours"
+        - sum += item.watt_hours if item.active?
+    li(data-role='list-divider')
+      h3= priority.name
+      p.ui-li-aside
+        = sum
+        |  watt hours
 
-
-
-table
-  thead
-    tr
-      th Items
-      th Watts
-      th Hours
-      th Priority
-      th Active
-      th Watt Hours
-      th
-
-  tbody
-    - @items.each do |item|
-      tr
-        td = item.name
-        td = item.watts
-        td = item.hours
-        td = item.priority_name
-        td = item.active ? 'True' : 'False'
-        td = item.watt_hours
-        td = link_to 'Edit', edit_plan_item_path(@plan, item)
-
-br
-
-= link_to 'New Item', new_item_path
+= link_to 'New Item', new_plan_item_path(@plan), class: 'ui-btn ui-mini'

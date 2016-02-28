@@ -11,25 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228164630) do
+ActiveRecord::Schema.define(version: 20160228214803) do
 
   create_table "items", force: :cascade do |t|
-    t.string   "name",       default: "My solar plan"
-    t.integer  "watts"
-    t.integer  "hours"
-    t.integer  "priority"
+    t.string   "name",        default: "Appliance Name"
+    t.integer  "watts",       default: 100
+    t.integer  "hours",       default: 1
+    t.integer  "priority",    default: 1,                null: false
     t.integer  "plan_id"
-    t.boolean  "active",     default: true
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "priority_id"
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "items", ["plan_id"], name: "index_items_on_plan_id"
+  add_index "items", ["priority_id"], name: "index_items_on_priority_id"
 
   create_table "plans", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       default: "Solar Plan"
     t.string   "ip"
     t.string   "token"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  create_table "priorities", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
