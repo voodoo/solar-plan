@@ -1,0 +1,28 @@
+
+
+
+table
+  thead
+    tr
+      th Items
+      th Watts
+      th Hours
+      th Priority
+      th Active
+      th Watt Hours
+      th
+
+  tbody
+    - @items.each do |item|
+      tr
+        td = item.name
+        td = item.watts
+        td = item.hours
+        td = item.priority_name
+        td = item.active ? 'True' : 'False'
+        td = item.watt_hours
+        td = link_to 'Edit', edit_plan_item_path(@plan, item)
+
+br
+
+= link_to 'New Item', new_item_path

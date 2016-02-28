@@ -1,0 +1,22 @@
+h1 Solar Plans
+
+table
+  thead
+    tr
+      th Name
+      th Watt Hours
+      th
+      th
+
+  tbody
+    - @plans.each do |plan|
+      tr
+        td = plan.name
+        td = plan.watt_hours
+        td = link_to 'Show', plan
+        td = link_to 'Edit', edit_plan_path(plan)
+        td = link_to 'Destroy', plan, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Plan', new_plan_path

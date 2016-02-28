@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @item.name
+p
+  strong Watts:
+  = @item.watts
+p
+  strong Hours:
+  = @item.hours
+p
+  strong Priority:
+  = @item.priority
+p
+  strong Plan:
+  = @item.plan
+p
+  strong Active:
+  = @item.active
+
+= link_to 'Edit', edit_item_path(@item)
+'|
+= link_to 'Back', items_path
