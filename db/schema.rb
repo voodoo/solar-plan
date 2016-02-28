@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228214803) do
+ActiveRecord::Schema.define(version: 20160228164630) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
     t.string   "name",        default: "Appliance Name"
     t.integer  "watts",       default: 100
     t.integer  "hours",       default: 1
-    t.integer  "priority",    default: 1,                null: false
     t.integer  "plan_id"
     t.integer  "priority_id"
     t.boolean  "active",      default: true
@@ -25,8 +27,8 @@ ActiveRecord::Schema.define(version: 20160228214803) do
     t.datetime "updated_at",                             null: false
   end
 
-  add_index "items", ["plan_id"], name: "index_items_on_plan_id"
-  add_index "items", ["priority_id"], name: "index_items_on_priority_id"
+  add_index "items", ["plan_id"], name: "index_items_on_plan_id", using: :btree
+  add_index "items", ["priority_id"], name: "index_items_on_priority_id", using: :btree
 
   create_table "plans", force: :cascade do |t|
     t.string   "name",       default: "Solar Plan"
@@ -42,4 +44,6 @@ ActiveRecord::Schema.define(version: 20160228214803) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "plans"
+  add_foreign_key "items", "priorities"
 end
