@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Want to go solar? First order of business is calculate your usage. That's what this app does.
 
-Things you may want to cover:
+To help guage, cost (FYI solar is expensive) it breaks down your usage into 3 categories
 
-* Ruby version
+* Need (like lights and fans)
+* Want (fridge)
+* Luxury (coffee maker)
 
-* System dependencies
+Secondly, this app helps you size your system.
 
-* Configuration
+* Grid tied - least expensive - best ROI
+* Off grid - using batteries - expensive but worth it if you don't have a POC or your POC is expensive
+* Hybrid - both batteries and grid tied - most expensive
 
-* Database creation
+## Other Calculators
 
-* Database initialization
+http://www.wholesalesolar.com/solar-information/start-here/offgrid-calculator
+https://www.donrowe.com/usage-chart-a/259.htm
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## TODO
 
-* Deployment instructions
-
-* ...
+[] Authorize edit of own via link and session
+[] Add sections Grid Tied, Off Grid Hybrid
+[] Calculate needed sizes for batts, panels
+[] Add props for Insolation, Panel size, Battery LVD
