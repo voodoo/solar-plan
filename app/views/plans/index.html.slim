@@ -4,9 +4,10 @@ ul(data-role="listview" data-inset="true")
       = link_to plan_path(plan) do
         h3= plan.name
         p.ui-li-aside
-          b= plan.watt_hours
-          br watts
+          b
+            = number_with_precision(plan.watt_hours/1000, precision: 0)
+            |  kWh
 
 
 
-= link_to 'New Plan', new_plan_path, class: 'ui-btn'
+= link_to 'New Plan', new_plan_path, class: 'ui-btn ui-corner-all ui-btn-b'

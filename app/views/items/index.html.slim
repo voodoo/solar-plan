@@ -1,9 +1,9 @@
 ul(data-role="listview" data-inset="true")
-  li(data-role='list-divider')
+  li(data-role='list-divider' data-theme='b')
     h3= @plan.name
-    p.ui-li-aside
-      b= @plan.watt_hours
-      |  watt hours
+    p.ui-li-aside(title="#{@plan.watt_hours} watt hours")
+      b= number_with_precision(@plan.watt_hours/1000, precision: 0)
+      |  kWh
   - Priority.all.each do |priority|
     - sum = 0
     - @items.each do | item |
@@ -18,7 +18,7 @@ ul(data-role="listview" data-inset="true")
               p.item-not-active= watt_hours
             p.ui-li-aside(class="#{'item-not-active' unless item.active?}")= "#{item.watt_hours} watt hours"
         - sum += item.watt_hours if item.active?
-    li(data-role='list-divider')
+    li(data-role='list-divider' data-theme='b')
       h3= priority.name
       p.ui-li-aside
         = sum

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160228164630) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "items", force: :cascade do |t|
     t.string   "name",        default: "Appliance Name"
     t.integer  "watts",       default: 100
@@ -27,13 +24,15 @@ ActiveRecord::Schema.define(version: 20160228164630) do
     t.datetime "updated_at",                             null: false
   end
 
-  add_index "items", ["plan_id"], name: "index_items_on_plan_id", using: :btree
-  add_index "items", ["priority_id"], name: "index_items_on_priority_id", using: :btree
+  add_index "items", ["plan_id"], name: "index_items_on_plan_id"
+  add_index "items", ["priority_id"], name: "index_items_on_priority_id"
 
   create_table "plans", force: :cascade do |t|
     t.string   "name",       default: "Solar Plan"
     t.string   "ip"
     t.string   "token"
+    t.integer  "insolation", default: 4
+    t.integer  "discharge",  default: 50
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
@@ -44,6 +43,4 @@ ActiveRecord::Schema.define(version: 20160228164630) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "items", "plans"
-  add_foreign_key "items", "priorities"
 end

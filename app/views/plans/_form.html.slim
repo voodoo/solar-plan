@@ -9,6 +9,17 @@
   .field
     = f.label :name
     = f.text_field :name
+    
+    = f.label 'Solar Insolation'
+    = f.text_field :insolation, type: :integer 
+    .hint 
+      p
+        | How much sun your geographic location gets   
+        = link_to 'US Chart', 'http://solarinsolation.org/wp-content/uploads/2012/01/usa_insolation_map.gif'
+  .field
+    = f.label 'Battery discharge (%)', for: :discarge
+    = f.text_field :discharge, type: 'range', min: 0, max: 100
+    .hint How far you plan to discharge your batteries      
   .field
     = f.submit
     /class: 'ui-btn ui-mini'

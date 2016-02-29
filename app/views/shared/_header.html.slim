@@ -1,5 +1,6 @@
 div(data-role="header")
-  h1 Solar Plan
+  h1= @title || 'Solar Plan'
+  = yield :toolbar_buttons
   - unless current_page?(root_path)
     a(href="/" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-home ui-btn-icon-notext") Home
   - if @plan && action_name == 'show'

@@ -19,19 +19,20 @@ Secondly, this app helps you size your system.
   * Most expensive
   * Uses both batteries and grid tied equipment
 
-## Other Calculators
+## Other Calculators / Resources
 
 * http://www.wholesalesolar.com/solar-information/start-here/offgrid-calculator
-
 * https://www.donrowe.com/usage-chart-a/259.htm
+* http://suncalc.net/
 
 
 ## TODO
 
 - [ ] Authorize edit of own via link and session
-- [ ] Add sections Grid Tied, Off Grid Hybrid
+- [ ] Add sections Grid Tied, Off Grid, Hybrid
 - [ ] Calculate needed sizes for batts, panels
 - [ ] Add props for Insolation, Panel size, Battery LVD
+- [ ] Paging
 
 ## Acronyms
 
