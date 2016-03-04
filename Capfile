@@ -20,6 +20,7 @@ require 'capistrano/deploy'
 # require 'capistrano/bundler'
 
 require 'capistrano/rbenv'
+require 'capistrano/bundler'
 require 'capistrano/passenger'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
