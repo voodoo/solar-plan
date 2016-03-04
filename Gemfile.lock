@@ -1,14 +1,19 @@
 GIT
-  remote: git://github.com/rails/web-console.git
-  revision: a6fc3e231ab1300f07e8b575dbdce4396206779f
+  remote: git://github.com/rack/rack.git
+  revision: 05bdc51dd7d39f6cea66481cd89143da0df1b41c
   specs:
-    web-console (3.1.1)
-      activemodel (>= 4.2)
-      debug_inspector
-      railties (>= 4.2)
+    rack (2.0.0.alpha)
+      json
 
-PATH
-  remote: /Users/vudu/Sites/rails/rails
+GIT
+  remote: git://github.com/rails/arel.git
+  revision: d72cf2972efc0d5cfe72bb7c009b2e76111b766e
+  specs:
+    arel (7.0.0)
+
+GIT
+  remote: git://github.com/rails/rails.git
+  revision: 38fa9859fd0b042e341757f86e4514639988173e
   specs:
     actioncable (5.0.0.beta3)
       actionpack (= 5.0.0.beta3)
@@ -66,10 +71,18 @@ PATH
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
 
+GIT
+  remote: git://github.com/rails/web-console.git
+  revision: a6fc3e231ab1300f07e8b575dbdce4396206779f
+  specs:
+    web-console (3.1.1)
+      activemodel (>= 4.2)
+      debug_inspector
+      railties (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    arel (7.0.0)
     builder (3.2.2)
     byebug (8.2.2)
     capistrano (3.4.0)
@@ -132,8 +145,6 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     puma (3.0.2)
-    rack (2.0.0.alpha)
-      json
     rack-test (0.6.3)
       rack (>= 1.0)
     rails-deprecated_sanitizer (1.0.3)
@@ -191,6 +202,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  arel!
   byebug
   capistrano
   capistrano-bundler
@@ -204,6 +216,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2
   puma (~> 3.0)
+  rack!
   rails!
   sass-rails (~> 5.0)
   slim-rails

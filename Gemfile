@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', path: "/Users/vudu/Sites/rails/rails"
+ruby '2.2.3'
+#gem 'rails', path: "/Users/vudu/Sites/rails/rails"
+
+
+gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rack', :git => 'git://github.com/rack/rack.git'
+gem 'arel', :git => 'git://github.com/rails/arel.git'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
