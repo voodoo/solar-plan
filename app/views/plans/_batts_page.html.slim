@@ -10,7 +10,7 @@
         h3 Batteries
         p 
           |  Multiplier is 
-          b = first_deet[:multiplier]
+          b = number_with_precision(first_deet[:multiplier], precision: 1)
 
           |  (1 + (1 - Discharge .
           b = @plan.discharge
@@ -26,18 +26,18 @@
           p 
             = number_with_delimiter(d[:watt_hours])
             |  x 
-            = first_deet[:multiplier]
+            = number_with_precision(first_deet[:multiplier], precision: 1)
           span.ui-li-count
-            = number_with_precision(d[:kwh]/100, precision: 0)
+            = number_with_precision(d[:kwh]/1000, precision: 0)
 
     ul(data-role="listview" data-inset="true")
       li(data-role='list-divider')
         h3 Cost of Batteries  
-        p About 100 dollars per kilo watt hour
+        p About 200 dollars per kilo watt hour
         .ui-li-count $
           
           
       - batt_details.each do |d|
         li
           h3= d[:name]
-          span.ui-li-count= number_to_currency(d[:kwh])            
+          span.ui-li-count= number_to_currency((d[:kwh]/1000) * 200)            

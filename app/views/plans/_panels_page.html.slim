@@ -40,4 +40,24 @@
             = @plan.panel_size
           span.ui-li-count= number_to_currency(pd[:panels] * @plan.panel_size)
 
+
+    ul(data-role="listview" data-inset="true")
+      li(data-role='list-divider')
+        h3 Off-grid system cost 
+        p About 4 dollars per watt  
+        .ui-li-count $
+          
+          
+      - panel_details.each do |pd|
+        li
+          h3= pd[:name]
+          p 
+            = pd[:panels]
+            |   x  
+            = @plan.panel_size
+            |   x $4
+
+          span.ui-li-count= number_to_currency(pd[:panels] * @plan.panel_size * 4)
+
+
  
