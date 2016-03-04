@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160228164630) do
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",        default: "Appliance Name"
     t.integer  "watts",       default: 100
     t.integer  "hours",       default: 1
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20160228164630) do
     t.datetime "updated_at",                             null: false
   end
 
-  add_index "items", ["plan_id"], name: "index_items_on_plan_id"
-  add_index "items", ["priority_id"], name: "index_items_on_priority_id"
+  add_index "items", ["plan_id"], name: "index_items_on_plan_id", using: :btree
+  add_index "items", ["priority_id"], name: "index_items_on_priority_id", using: :btree
 
-  create_table "plans", force: :cascade do |t|
+  create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       default: "Solar Plan"
     t.string   "ip"
     t.string   "token"
@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(version: 20160228164630) do
     t.datetime "updated_at",                        null: false
   end
 
-  create_table "priorities", force: :cascade do |t|
+  create_table "priorities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "plans"
+  add_foreign_key "items", "priorities"
 end

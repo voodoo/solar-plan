@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', path: "/Users/vudu/Sites/rails/rails"
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+#gem 'sqlite3'
 #gem 'pg'
 
 # Use Puma as the app server
@@ -46,6 +47,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rbenv',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-passenger', require: false
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', github: 'rails/web-console'
   gem 'listen', '~> 3.0.5'
