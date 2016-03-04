@@ -1,25 +1,39 @@
 = form_for @plan do |f|
   - if @plan.errors.any?
-    #error_explanation
+    .ui-body.ui-body-a.ui-corner-all
       h2 = "#{pluralize(@plan.errors.count, "error")} prohibited this plan from being saved:"
       ul
         - @plan.errors.full_messages.each do |message|
           li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-    
-    = f.label 'Solar Insolation'
-    = f.text_field :insolation, type: :integer 
-    .hint 
-      p
-        | How much sun your geographic location gets   
+  ul(data-role="listview" data-inset="true")
+    li data-role='list-divider'
+      - if @plan.new_record?
+        | New
+      - else
+        | Edit
+      |  Solar Plan
+    li
+      = f.label :name
+      = f.text_field :name    
+      .hint Just a handy reference. You can change any of these values any time later.  
+    li    
+      = f.label 'Solar Insolation Hours', for: :plan_insolation
+      = f.select :insolation, [2,3,4,5,6]
+      .hint 
+        | How much sun your geographic location receives   
         = link_to 'US Chart', 'http://solarinsolation.org/wp-content/uploads/2012/01/usa_insolation_map.gif'
-  .field
-    = f.label 'Battery discharge (%)', for: :discarge
-    = f.text_field :discharge, type: 'range', min: 0, max: 100
-    .hint How far you plan to discharge your batteries      
-  .field
-    = f.submit
-    /class: 'ui-btn ui-mini'
+    li
+      = f.label :panel_size, 'Panel size (watts)'
+      = f.select :panel_size, [50, 100, 150, 200, 250, 300]    
+      .hint 
+        | The size of your panels in watts   
+    li
+      = f.label 'Battery discharge (%)', for: :discarge
+      = f.text_field :discharge, type: 'range', min: 0, max: 100
+      .hint How far you plan to discharge your batteries      
+    li
+      = f.label 'Autonomy'
+      = f.select :autonomy, [1, 2, 3, 4, 5] 
+      .hint Days you can go without sun   
+  = f.submit
+  

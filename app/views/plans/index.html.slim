@@ -1,6 +1,6 @@
 ul(data-role="listview" data-inset="true")
   - @plans.each do | plan |
-    li
+    li(data-theme="#{'b' if my_plan == plan}")
       = link_to plan_path(plan) do
         h3= plan.name
         p.ui-li-aside
@@ -10,4 +10,3 @@ ul(data-role="listview" data-inset="true")
 
 
 
-= link_to 'New Plan', new_plan_path, class: 'ui-btn ui-corner-all ui-btn-b'

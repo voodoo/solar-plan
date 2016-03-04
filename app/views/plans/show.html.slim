@@ -1,8 +1,15 @@
-p#notice = notice
+- @no_page = true # not using regular page wrapper in layout
 
-= render partial: 'first_flash'
-= render template: 'items/index'
+div(data-role="page" id='solar-plan')
+  div(data-role="header")
+    = render partial: 'header'
+    = render partial: 'navbar', locals: {active: 'solar-plan'}
 
-/ = link_to 'Edit', edit_plan_path(@plan)
-/ '|
-/ = link_to 'Back', plans_path
+  div(role="main" class="ui-content")
+    = render partial: 'first_flash'
+    = render partial: 'items'
+
+= render partial: 'panels_page'
+= render partial: 'batts_page'    
+
+

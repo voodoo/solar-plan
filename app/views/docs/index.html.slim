@@ -1,5 +1,20 @@
-- content_for :toolbar_buttons do 
+- content_for :toolbar_btns do 
   a(href="/plans" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-bars ui-btn-icon-notext") Home
+
+- if has_plan?
+  .ui-body.ui-body-a.ui-corner-all
+    = link_to "My Solar Plan", plan_path(my_plan, token: my_plan.token), class: 'ui-btn ui-corner-all ui-btn-b'  
+    p Be sure to drag (or save) the above link to your Bookmarks so you can return and edit your Solar Plan.
+    p If you send the link to others, they can edit it also.
+- else
+  =  link_to 'Create yours!', new_plan_path, class: 'ui-btn ui-corner-all ui-btn-b ui-icon-user ui-btn-icon-right'
+
+
+
+
+a(href="/plans" class="ui-btn ui-corner-all") All Plans
+
+
 div data-content-theme="a" data-role="collapsibleset" data-theme="a" 
   div data-role="collapsible" 
     h3 What is this?

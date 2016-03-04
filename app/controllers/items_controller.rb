@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    # unless my_plan == @plan.id
+    #   render action: :show
+    # end
   end
 
   # POST /items

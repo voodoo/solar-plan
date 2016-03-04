@@ -1,7 +1,5 @@
 div(data-role="header")
   h1= @title || 'Solar Plan'
-  = yield :toolbar_buttons
+  = yield :toolbar_btns
   - unless current_page?(root_path)
     a(href="/" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-home ui-btn-icon-notext") Home
-  - if @plan && action_name == 'show'
-    = link_to "Edit", edit_plan_path(@plan), class: "ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-icon-edit ui-btn-icon-notext" 

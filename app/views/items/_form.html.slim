@@ -5,23 +5,28 @@
       ul
         - @item.errors.full_messages.each do |message|
           li = message
+  ul(data-role="listview" data-inset="true")
+    li data-role='list-divider'
+      - if @item.new_record?
+        | New
+      - else
+        | Edit
+      |  Item
+    li
+      = f.label :name
+      = f.text_field :name
+    li
+      = f.label :watts
+      = f.number_field :watts
+    li
+      = f.label :hours
+      = f.number_field :hours
+    li
+      = f.label :priority
+      = f.select :priority_id, Item.options_for_priority
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :watts
-    = f.number_field :watts
-  .field
-    = f.label :hours
-    = f.number_field :hours
-  .field
-    = f.label :priority
-    = f.select :priority_id, Item.options_for_priority
-  / .field
-  /   = f.label :plan
-  /   = f.text_field :plan
-  .field
-    = f.label :active
-    = f.check_box :active
+    li
+      = f.label :active
+      = f.check_box :active
+
   .actions = f.submit

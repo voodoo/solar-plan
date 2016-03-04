@@ -1,0 +1,43 @@
+#panels data-role="page"
+  div(data-role="header")
+    = render partial: 'header'
+    = render partial: 'navbar', locals: {active: 'panels'}
+  .ui-content role="main" 
+    ul(data-role="listview" data-inset="true")
+      li(data-role='list-divider')
+        h3 Panels
+        p
+          b= @plan.panel_size 
+          |  watt panels with 
+          b = @plan.insolation
+          |  hours of insolation
+              
+        p.ui-li-aside 
+          b Number of panels needed
+          br
+          | ((watt hours / insolation) / panels size) + 1    
+      - panel_details.each do |pd|
+        li
+          h3= pd[:name]
+          p 
+            = number_with_delimiter(pd[:watt_hours])
+            |  watt hours
+          span.ui-li-count= pd[:panels]
+
+    ul(data-role="listview" data-inset="true")
+      li(data-role='list-divider')
+        h3 Cost of Panels  
+        p About 1 dollar per watt  
+        .ui-li-count $
+          
+          
+      - panel_details.each do |pd|
+        li
+          h3= pd[:name]
+          p 
+            = pd[:panels]
+            |   x  
+            = @plan.panel_size
+          span.ui-li-count= number_to_currency(pd[:panels] * @plan.panel_size)
+
+ 

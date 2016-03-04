@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160228164630) do
     t.string   "ip"
     t.string   "token"
     t.integer  "insolation", default: 4
+    t.integer  "panel_size", default: 250
+    t.integer  "autonomy",   default: 2
     t.integer  "discharge",  default: 50
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false

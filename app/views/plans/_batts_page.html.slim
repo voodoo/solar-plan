@@ -1,0 +1,43 @@
+#batts data-role="page"
+  div data-role="header" 
+    = render partial: 'header'
+    = render partial: 'navbar', locals: {active: 'batts'}
+  .ui-content role="main" 
+    ul(data-role="listview" data-inset="true")
+      li(data-role='list-divider')
+        - deets = batt_details
+        - first_deet = deets.first
+        h3 Batteries
+        p 
+          |  Multiplier is 
+          b = first_deet[:multiplier]
+
+          |  (1 + (1 - Discharge .
+          b = @plan.discharge
+          |  ) * Autonomy 
+          b = @plan.autonomy
+          |  )
+
+        span.ui-li-count kWh
+   
+      - batt_details.each do |d|
+        li
+          h3= d[:name]
+          p 
+            = number_with_delimiter(d[:watt_hours])
+            |  x 
+            = first_deet[:multiplier]
+          span.ui-li-count
+            = number_with_precision(d[:kwh]/100, precision: 0)
+
+    ul(data-role="listview" data-inset="true")
+      li(data-role='list-divider')
+        h3 Cost of Batteries  
+        p About 100 dollars per kilo watt hour
+        .ui-li-count $
+          
+          
+      - batt_details.each do |d|
+        li
+          h3= d[:name]
+          span.ui-li-count= number_to_currency(d[:kwh])            

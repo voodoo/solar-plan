@@ -1,24 +1,25 @@
-p#notice = notice
+ul(data-role="listview" data-inset="true")
+  li
+    = link_to @plan do
+      h3= @plan.name
+      = kwh_count @plan
+  li 
+    h3 Name:
+    p = @item.name
 
-p
-  strong Name:
-  = @item.name
-p
-  strong Watts:
-  = @item.watts
-p
-  strong Hours:
-  = @item.hours
-p
-  strong Priority:
-  = @item.priority
-p
-  strong Plan:
-  = @item.plan
-p
-  strong Active:
-  = @item.active
+  li 
+    h3 Watts:
+    p = @item.watts
 
-= link_to 'Edit', edit_item_path(@item)
-'|
-= link_to 'Back', items_path
+  li 
+    h3 Hours:
+    p = @item.hours
+
+  li 
+    h3 Priority:
+    p = @item.priority.name        
+
+  li 
+    h3 Active:
+    p = @item.active ? 'Yes' : 'No'      
+

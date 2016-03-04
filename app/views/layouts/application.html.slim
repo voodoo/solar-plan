@@ -1,15 +1,20 @@
 doctype html
 html
   head
-    title Solar Plans
+    title= @title || 'Solar Plans'
     meta name="viewport" content="width=device-width, initial-scale=1.0"
-    = render 'shared/head'
-
     = stylesheet_link_tag    "application", media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
-    div(data-role="page")
-      = render 'shared/header'      
-      div(role="main" class="ui-content")
-        = yield
+  body    
+    - if @no_page
+      = yield
+    - else
+      = yield :navbar
+      div(data-role="page")
+        = render partial: 'shared/header'
+        div(role="main" class="ui-content")
+          - if notice
+            p#notice = notice
+          = yield
+    

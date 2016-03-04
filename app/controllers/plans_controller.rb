@@ -10,6 +10,8 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
+    # Incoming auth with token
+    set_my(@plan) if params[:token] === @plan.token
     @items = @plan.items
   end
 
@@ -29,6 +31,7 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
+        set_my(@plan)
         format.html { redirect_to plan_path(@plan), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else
@@ -70,6 +73,6 @@ class PlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :insolation, :discharge)
+      params.require(:plan).permit(:name, :insolation, :discharge, :panel_size, :autonomy)
     end
 end
